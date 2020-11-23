@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Queries</title>
+    <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_queries.css") }}">
+</head>
+
+<body>
+    <header>
+        <div class = "Questions">
+            <form id = "question-1" class = "question-group" action = "http://localhost:5000/basicqueries" method = 'POST'>
+                <p>Who has written the most reviews</p>
+                <button type = "submit" class = "submit-btn">Answer</button>
+            </form>
+            
+            <form id = "question-2" class = "question-group" action = "http://localhost:5000/basicqueries" method = 'POST'>
+                <p>What hosts list more than one listing?</p>
+                <button type = "submit" class = "submit-btn">Answer</button>
+            </form>
+        <div>
+    </header>
+</body>
+
+</html>

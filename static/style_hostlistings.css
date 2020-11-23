@@ -1,0 +1,143 @@
+
+
+*{
+    margin : 0;
+    padding : 0;
+}
+
+header{
+    height : 100%;
+    width : 100%;
+    background-size : cover;
+    background-position : center;
+    position : absolute;
+}
+
+.form-box{
+    width : 680px;
+    height : 450px;
+    position : relative;
+    margin : 6% auto;
+    background : #fff;
+    padding : 5px;
+    overflow : scroll;
+    object-fit: cover;
+}
+
+.input-field-1{
+    width : 100%;
+    padding : 10px 0;
+    margin : 5px 0;
+    border-left : 0;
+    border-top : 0;
+    border-right : 0;
+    border-bottom : 1px solid #999;
+    outline : none;
+    background : transparent;
+    position : relative;
+    top : 20px;
+}
+
+.summary-section{
+    position : absolute;
+    top : 230px;
+    width : 670px;
+    transition : .5s;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    overflow : scroll;
+}
+
+.summary-section:focus{
+    border: 3px solid grey;
+}
+
+#id1, #id2{
+    display : inline-block;
+    margin : 20px;
+    background : #fff;
+    margin-bottom : 15px;
+    box-shadow : 0 0 2px 2px grey;
+    text-decoration : none;
+    color: #000080;
+    font-weight: bold;
+    padding : 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+    position: relative;
+    top :150px;
+    left : -20px;
+}
+
+.input-field-2{
+    width : 100%;
+    padding : 10px 0;
+    margin : 5px 0;
+    border-left : 0;
+    border-top : 0;
+    border-right : 0;
+    border-bottom : 1px solid #999;
+    outline : none;
+    background : transparent;
+    position : relative;
+    top : 150px;
+}
+
+.input-field-3{
+    width : 100%;
+    padding : 10px 0;
+    margin : 5px 0;
+    border-left : 0;
+    border-top : 0;
+    border-right : 0;
+    border-bottom : 1px solid #999;
+    outline : none;
+    background : transparent;
+    position : relative;
+    top : 150px;
+}
+
+#id3, #id4{
+    display : inline-block;
+    margin : 20px;
+    background : #fff;
+    margin-bottom : 15px;
+    box-shadow : 0 0 2px 2px grey;
+    text-decoration : none;
+    color: #000080;
+    font-weight: bold;
+    padding : 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+    position: relative;
+    top :150px;
+    left : -20px;
+}
+
+.input-field-4{
+    width : 100%;
+    padding : 10px 0;
+    margin : 5px 0;
+    border-left : 0;
+    border-top : 0;
+    border-right : 0;
+    border-bottom : 1px solid #999;
+    outline : none;
+    background : transparent;
+    position : relative;
+    top : 150px;
+}
+
+.submit-btn{
+    width : 30%;
+    padding : 10px 30px;
+    cursor : pointer;
+    display : block;
+    margin : auto;
+    background : linear-gradient(to right, #ff105f, #ffad06);
+    border : 0;
+    outline : none;
+    border-radius : 30px;
+    position : relative;
+    top : 170px;
+}

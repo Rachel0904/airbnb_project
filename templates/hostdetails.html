@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Host Details Form</title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_hostdetails.css") }}">
+    </head>
+    
+    <body>
+    <header style = "background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url({{ url_for('static', filename = "bg.jpg") }})">
+        <div class = "form-box">
+            <form id = "details" class = "input-group" action = "http://127.0.0.1:5000/submithostdetails" method = 'POST'>
+                <input class = "hidden" text = "hidden" value = "{{hostid}}" name = "hostid">
+                <input class = "hidden" text = "hidden" value = "{{hostname}}" name = "hostname">
+                <input type = "text" class = "input-field" placeholder = "Your Image URL" name = "image_url" required>
+                <input type = "text" class = "input-field" placeholder = "Enter your Location" name = "location" required>
+                <textarea class = "about-section" rows="5" cols="100" placeholder="About You" required name = "about" required></textarea>
+                <select name = "identity_verified" required>
+                    <option>Identity Verified</option>
+                    <option value = "Yes">Yes</option>
+                    <option value = "No">No</option>
+                </select>
+                <button type = "submit" class = "submit-btn">Submit Details</button>
+            </form>
+        </div>
+    </header>
+    </body>
+        
+</html>    

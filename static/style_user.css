@@ -1,0 +1,290 @@
+
+*{
+    margin : 0;
+    padding : 0;
+    font-family : Century Gothic;
+}
+
+.flash{
+    width: 100%;
+    height : 40px;
+    margin: 0 auto;
+    background-color : #D3D3D3;
+}
+
+.flash h1{
+    color : black;
+}
+
+header{
+    background-color : #fff;
+}
+
+.main{
+    width : 1200px;
+    margin : auto;
+    position: relative;
+    top: 35px;
+}
+
+.logo img{
+    float : left;
+    width : 120px;
+    height : auto;
+}
+
+ul{
+    float : right;
+    list-style-type : none;
+}
+
+ul li{
+    display : inline-block;
+}
+
+ul li a, .dropbtn{
+    text-decoration : none;
+    color : #000080;
+    font-weight : bold;
+    padding : 5px 20px;
+    border : 1px solid transparent;
+    transition : 0.5s ease;
+}
+
+ul li a:hover{
+    background-color : #D3D3D3;
+    color : #000;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:#D3D3D3;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  font-size : 12.5px;
+  color: #000080;
+  text-decoration: none;
+  display: block;
+  background-color : #fff;
+  box-shadow : 0 0 2px 2px grey;
+  text-align: right;
+}
+
+.dropdown-content a:hover {background-color: #D3D3D3;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.search-box{
+    width : 1200px;
+    height : 65px;
+    position : relative;
+    top : 55px;
+    margin : 6% auto;
+    background : #fff;
+    box-shadow : 0 0 2px 2px grey;
+    padding : 5px;
+    overflow : hidden;
+}
+
+.input-group p{
+    color : #ff000;
+    font-size : 12.5px;
+    font-weight : bold;
+    position : relative;
+    left : 15px;
+}
+
+.input-field{
+    width : 20%;
+    height : 50px;
+    margin : 0 10px;
+    border-radius:3px 3px 3px 3px;
+    border : 1px solid transparent;
+    background : transparent;
+    border-right : 1px solid #D3D3D3;
+}
+
+.input-field:hover{
+    box-shadow: inset 0px 0px 0px 3px #D3D3D3;
+}
+
+.submit-btn{
+    float : right;
+    position : relative;
+    top : 6px;
+    right : 5px;
+    width : 10%;
+    padding : 10px 30px;
+    cursor : pointer;
+    display : block;
+    margin : auto;
+    background : linear-gradient(to right, #ff105f, #ffad06);
+    border : 0;
+    outline : none;
+    border-radius : 30px;
+}
+
+.hr{
+    width : 1200px;
+    border : 3px solid #D3D3D3;
+    position: relative;
+    top : 30px;
+}
+.recommendations{
+    position : relative;
+    top : 60px;
+}
+
+.recommendations h1{
+    font-size : 30px;
+}
+
+.each_listing{
+    float : left;
+    box-shadow : 0 0 2px 2px grey;
+    width : 1200px;
+    height : 300px;
+    display: block;
+    padding: 5px;
+    margin-bottom : 20px;
+    position : relative;
+    top : 30px;
+}
+
+
+.listing_details h1{
+    font-family : Open Sans;
+    font-size : 16px;
+    font-weight : bold;
+}
+
+.listing_details img{
+    float : left;
+    position : relative;
+    top : 10px;
+    width : 300px;
+    height : 200px;
+}
+
+.listing_details p{
+    position: relative;
+    top: 220px;
+    left : -300px;
+    font-family: Helvetica;
+    font-size : 15px;
+    font-weight : bold;
+}
+
+.listing_details h1:hover{
+    background-color : #D3D3D3;
+    width : 400px;
+}
+
+.hover-listing{
+    display : none;
+    z-index : 4;
+}
+
+.listing_details:hover .hover-listing{
+    display : block;
+    background: #fff;
+    box-shadow : 0 0 2px 2px grey;
+    position : absolute;
+    margin-top: 5px;
+}
+
+.hover-listing ul li{
+    display : block;
+    margin : 10px;
+    color : green;
+    font-weight : bold;
+}
+
+.reviews{
+    position : relative;
+    width : 780px;
+    height : 306px;
+    top : -72px;
+    left : 123px;
+    box-shadow : 0 0 2px 2px white;
+    width : 780px;
+    height : 306px;
+    overflow : scroll;
+    border-left : 2px solid #D3D3D3;
+    
+}
+
+.reviews h1{
+    position: relative;
+    top : 10px;
+    left : 20px;
+    font-weight : bold;
+    font-size : 20px;
+}
+
+#hr1{
+    width : 720px;
+    border : 2px solid #D3D3D3;
+    position: relative;
+    top : 20px;
+}
+
+.listing, .location, .comment{
+    display : none;
+}
+.comment-section{
+    position : absolute;
+    top : 35px;
+    width : 720px;
+    transition : .5s;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+}
+
+.comment-section:focus{
+    border: 3px solid grey;
+}
+
+.submit-btn-1{
+    position : absolute;
+    top : 125px;
+}
+
+.reviews-1{
+    width : 720px;
+    position : relative;
+    top : 170px;
+    box-shadow : 0 0 2px 2px white;
+    border-bottom : 2px solid #D3D3D3;
+    margin-bottom : 10px;
+}
+
+.reviews-1 h2{
+    font-family: Courier;
+    font-size: 12px;
+    font-weight : bold;
+    margin-bottom : 7px;
+}
+
+.reviews-1 p{
+    text-decoration : none;
+    font-family: Courier;
+    font-size: 15px;
+    color : red;
+}
+
+.delete-btn{
+    position: absolute;
+    top : 0px;
+    left : 650px;
+}
+

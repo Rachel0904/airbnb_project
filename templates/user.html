@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+        <head>
+            <title>User Page</title>
+            <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_user.css") }}">
+        </head>
+        
+        <body>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class = 'flash'>
+                            <h2>{{ message }}</h2>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            {% if error %}
+                <script>var errorvar = '{{error}}'</script>
+                <script>alert(errorvar);</script>
+            {% endif %}
+            
+            <header>
+            <div class = "main">
+                <div class = "logo">
+                    <img src = "{{ url_for('static', filename = "logo.png") }}">
+                <div>
+                <ul>
+                    <li><a href = "http://127.0.0.1:5000/hostloginsignup">Host your home</a></li>
+                    <li class = "dropdown">
+                        <a href = "javascript:void(0)" class = "dropbtn">{{UserId}}</a>
+                        <div class = "dropdown-content" style="right:0">
+                            <a href = "http://127.0.0.1:5000/logout">LOG OUT</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class = "search-box">
+                <form id = "search" class = "input-group" action = "http://127.0.0.1:5000/validatelocation" method = 'POST'>
+                    <p>
+                    LOCATION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &nbsp;&nbsp;&emsp;&emsp;CHECK IN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;CHECK OUT&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &nbsp;GUESTS
+                    </p>
+                    <input type = "text" class = "input-field" placeholder = "Add neighbourhood" name = "location" required>
+                    
+                    <input type = "date" class = "input-field" placeholder = "Add start date" name = "start_date">
+                    <input type = "date" class = "input-field" placeholder = "Add end date" name = "end_date">
+                    <input type = "text" class = "input-field" placeholder = "Add guests" name = "guests">
+                    <button type = "submit" class = "submit-btn">Search</button>
+                </form>
+            </div>
+            
+            <hr class = "hr">
+            <div class = "recommendations">
+                <h1>Recommendations Just For You</h1>
+                
+                {% for key, value in listings.items() %}
+                <div class = "each_listing">
+                
+                    <div class = "listing_details">
+                        <h1> {{key}} </h1>
+                        <div class = "hover-listing">
+                        <ul>
+                            <li>Id :{{value['listing_id']}}</li>
+                            <li>Host of the listing: <a href = "http://127.0.0.1:5000/hostprofile/{{value['host_id']}}">{{value['host_id']}}</a></li>
+                        
+                            <li>Property Type : {{value['property_type']}}</li>
+                            <li>Room Type : {{value['room_type']}}</li>
+                            <li>Bed Type : {{value['bed_type']}}</li>
+                        
+                            <li>Beds : {{value['no_of_beds']}}</li>
+                            <li>Bedrooms : {{value['no_of_bedrooms']}}</li>
+                            <li>Accomodates : {{value['no_of_accomodates']}}</li>
+                        <ul>
+                        </div>
+                        
+                        <img src = {{value['picture_url']}}>
+                        <p>Listing ID: {{value['listing_id']}}<p>
+                        <p>Property type: {{value['property_type']}}<p>
+                        <p>${{value['price']}} / night<p>
+                    </div>
+                    
+                    <div class = "reviews">
+                        <h1>Reviews<h1>
+                        <hr id = "hr1">
+                        
+                        <form action="http://127.0.0.1:5000/postreview_r" method="POST">
+                            <input type = "hidden" class = "location" value = "{{location}}" name = "location">
+                            <input type = "hidden" class = "location" value = "{{start_date}}" name = "start_date">
+                            <input type = "hidden" class = "location" value = "{{end_date}}" name = "end_date">
+                            <input type = "hidden" class = "location" value = "{{guests}}" name = "guests">
+                            
+                            <input class = "listing" value = {{value['listing_id']}} name = "listing">
+                            <textarea class = "comment-section" rows="5" cols="100" placeholder="Your Review.." required name = "review"></textarea>
+                            <button type = "submit" class = "submit-btn-1">Submit Review</button>
+                        </form>
+                        
+                        {% if value['listing_id'] in reviews %}
+                            {% for l in reviews[value['listing_id']] %}
+                                <div class = "reviews-1">
+                                    <h2> Reviewer id : {{ l['reviewer_id'] }}</h2>
+                                    <h2>{{ l['date'] }}</h2>
+                                    <p>{{ l['review'] }}</p>
+                                    {% if l['reviewer_id'] == UserId %}
+                                        <form action="http://127.0.0.1:5000/deletereview_r" method="POST">
+                                            <input type = "text" class = "location" value = "{{location}}" name = "location">
+                                            <input type = "hidden" class = "location" value = "{{start_date}}" name = "start_date">
+                                            <input type = "hidden" class = "location" value = "{{end_date}}" name = "end_date">
+                                            <input type = "hidden" class = "location" value = "{{guests}}" name = "guests">
+                                            <input class = "listing" value = {{value['listing_id']}} name = "listing">
+                                            <input type = "text" class = "comment" value = "{{l['review']}}" name = "comment">
+                                            <button type = "submit" class = "delete-btn">Delete</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %} 
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            </header>
+            
+            
+        </body>
+</html>

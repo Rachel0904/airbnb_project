@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_index.css") }}">
+    </head>
+    <body>
+        <header style = "background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url({{ url_for('static', filename = "bg.jpg") }})">
+        
+        <div class = "main">
+            <div class = "logo">
+                <img src = "{{ url_for('static', filename = "logo.png") }}">
+            </div>
+            
+            <ul>
+                <li class = "active"><a href = "http://127.0.0.1:5000/">Home</a></li>
+                <li><a href = "http://127.0.0.1:5000/loginsignuppage">Login/Signup</a></li>
+                <li><a href = "http://127.0.0.1:5000/hostloginsignup">Host your home</a></li>
+            </ul>
+        </div>
+        
+        <div class = "title">
+            <h1>BELONG ANYWHERE!</h1>
+        </div>
+        
+        <div class = "subtitle">
+            <p>THERE ARE THREE RESPONSES TO A PIECE OF DESIGN: YES, NO, AND WOW.</p>
+            <p>WOW IS THE ONE WE AIM FOR!</p>
+        </div>
+        </header>
+    </body>
+</html>

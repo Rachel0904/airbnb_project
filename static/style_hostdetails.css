@@ -1,0 +1,86 @@
+
+*{
+    margin : 0;
+    padding : 0;
+}
+
+header{
+    height : 100%;
+    width : 100%;
+    background-size : cover;
+    background-position : center;
+    position : absolute;
+}
+
+
+.form-box{
+    width : 680px;
+    height : 450px;
+    position : relative;
+    margin : 6% auto;
+    background : #fff;
+    padding : 5px;
+    overflow : hidden;
+    object-fit: cover;
+}
+
+.input-field{
+    width : 100%;
+    padding : 10px 0;
+    margin : 5px 0;
+    border-left : 0;
+    border-top : 0;
+    border-right : 0;
+    border-bottom : 1px solid #999;
+    outline : none;
+    background : transparent;
+    position : relative;
+    top : 20px;
+}
+
+.about-section{
+    position : absolute;
+    top : 180px;
+    width : 670px;
+    transition : .5s;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    overflow : scroll;
+}
+
+.about-section:focus{
+    border: 3px solid grey;
+}
+
+select{
+    display : inline-block;
+    margin : 5px;
+    background : #fff;
+    box-shadow : 0 0 2px 2px grey;
+    text-decoration : none;
+    color: #000080;
+    font-weight: bold;
+    padding : 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+    position : relative;
+    top : 260px;
+}
+
+.submit-btn{
+    width : 30%;
+    padding : 10px 30px;
+    cursor : pointer;
+    display : block;
+    margin : auto;
+    background : linear-gradient(to right, #ff105f, #ffad06);
+    border : 0;
+    outline : none;
+    border-radius : 30px;
+    position : relative;
+    top : 260px;
+}
+
+.hidden{
+    display : none;
+}

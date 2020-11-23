@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Host Profile</title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_hostprofile.css") }}">
+    </head>
+    
+    <body>
+        <header>
+        
+            <div class = "main">
+                <div class = "logo">
+                    <img src = "{{ url_for('static', filename = "logo.png") }}">
+                </div>
+                <ul>
+                    <li class = "dropdown">
+                        <a href = "javascript:void(0)" class = "dropbtn">{{UserId}}</a>
+                        <div class = "dropdown-content" style="right:0">
+                            <a href = "http://127.0.0.1:5000/logout">LOG OUT</a>
+                        </div>
+                    </li>
+                </ul>
+                <hr class = "hr">
+            </div>
+        
+            <div class = "basicinfo">
+                <img src = {{host_information["host_image"]}}>
+                <hr id = "hr1">
+                <table>
+                    <tr>
+                        <td>Host ID</td>
+                        <td>{{host_information["host_id"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Response Time</td>
+                        <td>{{host_information["response_time"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Acceptance Rate</td>
+                        <td>{{host_information["acceptance_rate"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Response Rate</td>
+                        <td>{{host_information["response_rate"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Identity Verified</td>
+                        <td>{{host_information["identity_verified"]}}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class = 'basicinfo-1'>
+                <h1>Hi, I'm {{host_information["host_name"]}}</h1>
+                <p id = "p1">Joined on {{host_information["host_since"]}}</p>
+                <hr id = "hr2">
+                <p id = "p2">{{host_information['about']}}</p>
+                <hr id = "hr3">
+                <p id = "p3">Lives in {{host_information["host_location"]}}</p>
+                <hr id = "hr4">
+                <p id = "p4"> {{host_information["host_name"]}}'s listings</p>
+            </div>
+            
+            <div class = "listings">
+                {% for key, value in listings.items() %}
+                    <div class = "each_listing">
+                        <img src = {{value['picture_url']}}>
+                        <p>{{value["room_type"]}} . {{value["property_type"]}}<p>
+                        <h1> {{key}} </h1>
+                    </div>
+                {% endfor %}
+            </div>
+            
+        </header>
+    </body>
+</html>

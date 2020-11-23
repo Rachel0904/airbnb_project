@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Listing Details Form</title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_hostlistings.css") }}">
+    </head>
+    
+    <body>
+        <header style = "background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url({{ url_for('static', filename = "bg.jpg") }})">
+            <div class = "form-box">
+            <h1> Fill out the details of your listing</h1>
+            <form id = "details" class = "input-group" action = "http://127.0.0.1:5000/submitlistingsdetails" method = 'POST'>
+                <input type = "text" class = "input-field-1" placeholder = "Listing ID" name = "listing_id" required>
+                <input type = "text" class = "input-field-1" placeholder = "Listing Name" name = "listing_name" required>
+                <input type = "text" class = "input-field-1" placeholder = "Picture Url" name = "picture_url" required>
+                <input type = "hidden" class = "input-field-1" placeholder = "Host ID" value = "{{hostid}}" name = hostid required>
+                <textarea class = "summary-section" rows="5" cols="100" placeholder="Summary of your listing" name = "summary" required></textarea>
+
+                <select id = "id1" name = "Property_type">
+                    <option>Property Type</option>
+                    <option value = "Apartment">Apartment</option>
+                    <option value = "House">House</option>
+                    <option value = "Townhouse">Townhouse</option>
+                    <option value = "Loft">Loft</option>
+                    <option value = "Condominium">Condominium</option>
+                    <option value = "Serviced apartment">Serviced apartment</option>
+                    <option value = "Boutique hotel">Boutique hotel</option>
+                    <option value = "Villa">Villa</option>
+                    <option value = "Cottage">Cottage</option>
+                    <option value = "Castle">Castle</option>
+                </select>
+                
+                <select id = "id2" name = "Room_type">
+                    <option>Room Type</option>
+                    <option value = "Entire home">Entire home</option>
+                    <option value = "Private room">Private room</option>
+                    <option value = "Shared room">Shared room</option>
+                    <option value = "Hotel room">Hotel room</option>
+                </select>
+                
+                <select id = "id3" name = "Bed_type">
+                    <option>Bed Type</option>
+                    <option value = "Real Bed">Real Bed</option>
+                    <option value = "Pull-out Sofa">Pull-out Sofa</option>
+                    <option value = "Futon">Futon</option>
+                    <option value = "Couch">Couch</option>
+                    <option value = "Airbed">Airbed</option>
+                </select>
+                
+                <input type = "text" class = "input-field-2" placeholder = "Number of Beds" name = "no_of_beds" required>
+                <input type = "text" class = "input-field-2" placeholder = "Number of Bedrooms" name = "no_of_bedrooms" required>
+                <input type = "text" class = "input-field-2" placeholder = "Number of accommodates" name = "no_of_accommodates" required>
+            
+                <input type = "text" class = "input-field-3" placeholder = "Price of your Listing" name = "price" required>
+                <input type = "text" class = "input-field-3" placeholder = "Cleaning Fee" name = "cleaning_fee" required>
+                <input type = "text" class = "input-field-3" placeholder = "Security Deposit" name = "security_deposit" required>
+                <input type = "text" class = "input-field-3" placeholder = "Monthly Price" name = "monthly_price" required>
+                <input type = "text" class = "input-field-3" placeholder = "Weekly Price" name = "weekly_price" required>
+                
+                <select id = "id3" name = "Cancellation_policy" required>
+                    <option>Cancellation Policy</option>
+                    <option value = "flexible">flexible</option>
+                    <option value = "moderate">moderate</option>
+                    <option value = "strict">strict</option>
+                </select>
+                
+                <select id = "id4" name = "Instant_Bookable" required>
+                    <option>Instant Bookable</option>
+                    <option value = 't'>Yes</option>
+                    <option value = 'f'>No</option>
+                </select>
+                
+                <input type = "text" class = "input-field-4" placeholder = "Available No of Days for the next 30 days" name = "availability_30" required>
+                <input type = "text" class = "input-field-4" placeholder = "Available No of Days for the next 60 days" name = "availability_60" required>
+                <input type = "text" class = "input-field-4" placeholder = "Available No of Days for the next 90 days" name = "availability_90" required>
+                <input type = "text" class = "input-field-4" placeholder = "Available No of Days for the next 365 days" name = "availability_365" required>
+                <input type = "text" class = "input-field-4" placeholder = "Location of your listing" name = "neighbourhood" required>
+            
+                <button type = "submit" class = "submit-btn">Submit Details</button>
+            </form>    
+            </div>
+        <header>
+    </body>
+</html>

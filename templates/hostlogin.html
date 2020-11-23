@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Login and Signup Form</title>
+            <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_login.css") }}">
+        </head>
+        
+        <body>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <script>var flashvar ={{message}}</script>
+                        <script>alert(flashvar);</script>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            {% if error %}
+                <script>var errorvar = 'User Id or Password is Incorrect!'</script>
+                <script>alert(errorvar);</script>
+            {% endif %}
+            
+            {% if error_r %}
+                <script>var errorvar = '{{error_r}}'</script>
+                <script>alert(errorvar);</script>
+            {% endif %}
+            
+            <header style = "background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url({{ url_for('static', filename = "bg.jpg") }})">
+                <div class = "form-box">
+                    <div class = "button-box">
+                        <div id = "btn"></div>
+                        <button type = "button" class = "toggle-btn" onclick = "login()">Log In</button>
+                        <button type = "button" class = "toggle-btn" onclick = "signup()">Sign Up</button>
+                    </div>
+                    <div class = "social-icons">
+                        <img src = "{{ url_for('static', filename = "tw.png") }}">
+                        <img src = "{{ url_for('static', filename = "fb.png") }}">
+                        <img src = "{{ url_for('static', filename = "gp.png") }}">
+                    </div>
+                    <form id = "login" class = "input-group" action = "http://127.0.0.1:5000/hostlogin" method = 'POST'>
+                        <input type = "text" class = "input-field" placeholder = "Host Id" name = "hostid" autocomplete="off" required>
+                        <input type = "password" class = "input-field" placeholder = "Enter Password" name = "password" autocomplete="off"  required>
+                        <input type = "checkbox" class = "check-box"><span>Remember Password</span>
+                        <button type = "submit" class = "submit-btn">Log in</button>
+                    </form>
+                    
+                    <form id = "signup" class = "input-group" action = "http://127.0.0.1:5000/hostsignup" method = 'POST'>
+                        <input type = "text" class = "input-field" placeholder = "Host Id" name = "hostid" autocomplete="off" required>
+                        <input type = "text" class = "input-field" placeholder = "Host Name" name = "hostname" autocomplete="off" required>
+                        <input type = "text" class = "input-field" placeholder = "Email Id" name = "emailId"  autocomplete="off" required>
+                        <input type = "password" class = "input-field" placeholder = "Enter Password" name = "password" autocomplete="off"  required>
+                        <input type = "checkbox" class = "check-box"><span>I agree to the terms and conditions</span>
+                        <button type = "submit" class = "submit-btn">Sign up</button>
+                    </form>
+                    
+                </div>
+            </header>
+            <script>
+                var x = document.getElementById("login");
+                var y = document.getElementById("signup");
+                var z = document.getElementById("btn");
+                
+                function signup(){
+                    x.style.left = "-400px";
+                    y.style.left = "50px";
+                    z.style.left = "110px";
+                }
+                
+                function login(){
+                    x.style.left = "50px";
+                    y.style.left = "450px";
+                    z.style.left = "0px";
+                }
+                
+            </script>
+        </body>
+    </html>

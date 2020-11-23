@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stays</title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = "style_search.css") }}">
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        <header>        
+        <div class = "main">
+            <div class = "logo">
+                <img src = "{{ url_for('static', filename = "logo.png") }}">
+            </div>
+            <ul>
+                <li class = "dropdown">
+                    <a href = "javascript:void(0)" class = "dropbtn">{{UserId}}</a>
+                    <div class = "dropdown-content" style="right:0">
+                        <a href = "http://127.0.0.1:5000/logout">LOG OUT</a>
+                    </div>
+                </li>
+            </ul>
+            <hr class = "hr">
+            <h2 class = "location_title">Stays in {{location}}</h2>
+        </div>
+        
+        
+        <div class = "filter">
+        <form action="http://127.0.0.1:5000/availablefilters" method="POST">
+            <input type="hidden" class = "location" value = "{{location}}" name = "location">
+            <ul>
+                <select name = "Cancellation_Policy">
+                    <option>Cancellation Policy</option>
+                    <option value = "flexible">flexible</option>
+                    <option value = "moderate">moderate</option>
+                    <option value = "strict"><li>strict</option>
+                </select>
+                
+                <select name = "Property_Type">
+                    <option>Property Type</option>
+                    <option value = "Apartment">Apartment</option>
+                    <option value = "House">House</option>
+                    <option value = "Townhouse">Townhouse</option>
+                    <option value = "Loft">Loft</option>
+                    <option value = "Condominium">Condominium</option>
+                    <option value = "Serviced apartment">Serviced apartment</option>
+                    <option value = "Boutique hotel">Boutique hotel</option>
+                    <option value = "Villa">Villa</option>
+                    <option value = "Cottage">Cottage</option>
+                    <option value = "Castle">Castle</option>
+                <select>
+
+
+            <li><a href = "#">More Filters</a>
+                <div class = 'sub-menu-1'>
+                    <ul>
+                        <select name = "Instant_Bookable">
+                            <option>Instant Bookable</option>
+                            <option value = "Yes">Yes</option>
+                            <option value = "No">No</option>
+                        </select>
+                        <select name = "Room_Type">
+                            <option>Room Type</option>
+                            <option value = "Entire home">Entire home</option>
+                            <option value = "Private room">Private room</option>
+                            <option value = "Shared room">Shared room</option>
+                            <option value = "Hotel room">Hotel room</option>
+                        </select>
+                        
+                        <select name = "Bed_Type">
+                            <option>Bed Type</option>
+                            <option value = "Real Bed">Real Bed</option>
+                            <option value = "Pull-out Sofa">Pull-out Sofa</option>
+                            <option value = "Futon">Futon</option>
+                            <option value = "Couch">Couch</option>
+                            <option value = "Airbed">Airbed</option>
+                        </select>
+                        
+                        <select name = "Price">
+                            <option>Price</option>
+                            <option value = "$1.00-$200.00">$1.00-$200.00</option>
+                            <option value = "$201.00-$400.00">$201.00-$400.00</option>
+                            <option value = "$401.00-$600.00">$401.00-$600.00</option>
+                            <option value = "$601.00-$800.00">$601.00-$800.00</option>
+                            <option value = "$801.00-$1000.00">$801.00-$1000.00</option>     
+                        </select>
+                    </ul>
+                </div>
+            </li>
+            </ul>
+            
+            <button type = "submit" class = "apply-btn">Apply Filter</button>
+        </form>
+        </div>
+        
+        <div class = "results">
+            {% for key, value in result.items() %}
+                <div class = "each_listing">
+                
+                    <div class = "listing_details">
+                        <h1> {{key}} </h1>
+                        <div class = "hover-listing">
+                        <ul>
+                            <li>Id :{{value['listing_id']}}</li>
+                            <li>Host of the listing: <a href = "http://127.0.0.1:5000/hostprofile/{{value['host_id']}}">{{value['host_id']}}</a></li>
+                        
+                            <li>Property Type : {{value['property_type']}}</li>
+                            <li>Room Type : {{value['room_type']}}</li>
+                            <li>Bed Type : {{value['bed_type']}}</li>
+                            <li>Bedrooms : {{value['no_of_bedrooms']}}</li>
+                            <li>Accomodates : {{value['no_of_accommodates']}}</li>
+                        <ul>
+                        </div>
+                        
+                        <img src = {{value['picture_url']}}>
+                        <p>Listing ID: {{value['listing_id']}}<p>
+                        <p>Property type: {{value['property_type']}}<p>
+                        <p>${{value['price']}} / night<p>
+                    </div>
+                    
+                    <div class = "reviews">
+                        <h1>Reviews<h1>
+                        <hr id = "hr1">
+                        
+                        <form action="http://127.0.0.1:5000/postreview" method="POST">
+                            <input type = "text" class = "location" value = "{{location}}" name = "location">
+                            <input type = "hidden" class = "location" value = "{{start_date}}" name = "start_date">
+                            <input type = "hidden" class = "location" value = "{{end_date}}" name = "end_date">
+                            <input type = "hidden" class = "location" value = "{{guests}}" name = "guests">
+                            <input class = "listing" value = {{value['listing_id']}} name = "listing">
+                            <textarea class = "comment-section" rows="5" cols="100" placeholder="Your Review.." required name = "review"></textarea>
+                            <button type = "submit" class = "submit-btn">Submit Review</button>
+                        </form>
+                        
+                        {% if value['listing_id'] in result_r %}
+                            {% for l in result_r[value['listing_id']] %}
+                                <div class = "reviews-1">
+                                    <h2> Reviewer id : {{ l['reviewer_id'] }}</h2>
+                                    <h2>{{ l['date'] }}</h2>
+                                    <p>{{ l['review'] }}</p>
+                                    {% if l['reviewer_id'] == UserId %}
+                                        <form action="http://127.0.0.1:5000/deletereview" method="POST">
+                                            <input type = "text" class = "location" value = "{{location}}" name = "location">
+                                            <input type = "hidden" class = "location" value = "{{start_date}}" name = "start_date">
+                                            <input type = "hidden" class = "location" value = "{{end_date}}" name = "end_date">
+                                            <input type = "hidden" class = "location" value = "{{guests}}" name = "guests">
+                                            <input class = "listing" value = {{value['listing_id']}} name = "listing">
+                                            <input type = "text" class = "comment" value = "{{l['review']}}" name = "comment">
+                                            <button type = "submit" class = "delete-btn">Delete</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %} 
+                    </div>
+                    
+                    
+                </div>
+            {% endfor %}  
+        <div>
+        {{paginate.links}}
+        
+        </header>
+    </body>
+</html>
